@@ -51,7 +51,7 @@ export default async function VillagerDetailPage({ params }: { params: { name: s
   }
 
   return (
-    <div className="bg-gray-900 min-h-screen p-4 sm:p-6 md:p-8 flex items-center justify-center">
+    <div className="bg-gray-950 min-h-screen p-4 sm:p-6 md:p-8 flex items-center justify-center">
       <div className="max-w-4xl w-full bg-white rounded-xl shadow-lg overflow-hidden md:flex">
         <div className="md:w-1/3 p-6 flex-shrink-0">
           <Image
@@ -84,7 +84,7 @@ export default async function VillagerDetailPage({ params }: { params: { name: s
           </div>
 
           <div className="mt-8 text-center">
-            <Link href="/villagers" className="text-blue-600 font-semibold hover:underline">
+            <Link href="/villagers" className="text-red-900 font-semibold hover:underline">
               &larr; Back to Villager List
             </Link>
           </div>

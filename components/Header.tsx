@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Header() {
     return (
-        <header className="border-b bg-red-800">
+        <header className="w-full shadow-md bg-red-800">
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-between h-16">
 
@@ -13,6 +13,7 @@ export default function Header() {
                             alt="Asha Page Logo"
                             width={60} 
                             height={0} 
+                            className="object-contain"
                         />
                         <span className="text-xl arial font-bold">
                             Animal Crossing Page
@@ -24,8 +25,8 @@ export default function Header() {
                         <Link href="/" className="text-white-700 hover:text-gray-300">
                         Home
                         </Link>
-                        <Link href="/" className="text-white-700 hover:text-gray-300">
-                        Characters
+                        <Link href="/recipe" className="text-white-700 hover:text-gray-300">
+                        Recipe
                         </Link>
                         <Link href="/about" className="text-white-700 hover:text-gray-300">
                         About
