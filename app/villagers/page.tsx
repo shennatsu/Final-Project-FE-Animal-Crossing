@@ -1,5 +1,4 @@
-// app/villagers/page.tsx
-import Image from 'next/image';
+import VillagerClientPage from './VillagerClientPage'; // Impor komponen client
 
 type Villager = {
   name: string;
@@ -8,6 +7,7 @@ type Villager = {
   personality: string;
 };
 
+// Fungsi fetch data tetap sama
 export const dynamic = 'force-dynamic';
 
 async function getData(): Promise<Villager[]> {
@@ -21,27 +21,23 @@ async function getData(): Promise<Villager[]> {
   return res.json();
 }
 
+// Komponen Page sekarang menjadi lebih ringkas
 export default async function VillagersPage() {
-  const villagers = await getData();
+  const allVillagers = await getData();
+  // Anda bisa tetap membatasi jumlah data awal jika mau
+  const initialVillagers = allVillagers.slice(0, 80);
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6 text-center">Animal Crossing Villagers</h1>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {villagers.slice(0, 80).map((villager) => (
-          <div key={villager.name} className="bg-white rounded-lg shadow p-4 text-center">
-            <Image
-              src={villager.image_url}
-              alt={villager.name}
-              width={150}
-              height={150}
-              className="mx-auto rounded"
-            />
-            <h2 className="mt-2 font-semibold text-lg">{villager.name}</h2>
-            <p className="text-sm text-black">{villager.species} - {villager.personality}</p>
-          </div>
-        ))}
-      </div>
+    <div className="p-6 bg-black min-h-screen text-white">
+      <h1 className="text-3xl font-bold mb-4 text-center">
+        Animal Crossing Villagers
+      </h1>
+      <p className="text-center text-gray-300 mb-8">
+        Find your favorite villager!
+      </p>
+      
+      {/* Render komponen client dan kirim data awal sebagai props */}
+      <VillagerClientPage initialVillagers={initialVillagers} />
     </div>
   );
 }

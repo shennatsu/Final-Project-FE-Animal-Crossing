@@ -2,23 +2,119 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <section className="bg-white py-24">
-      <div className="flex flex-col justify-center items-center">
-        <div className="flex flex-col gap-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-black">
-            Welcome to Animal Crossing!
-          </h1>
-          <button className="bg-blue-500 font-bold text-5xl py-3 px-8 rounded-full hover:bg-blue-600 transition-all transform hover:scale-105 shadow-lg">
-            Get Started Now
-          </button>
+    <div className="min-h-screen">
+      {/* HERO SECTION dengan video background */}
+      <section className="bg-white">
+        <header className="relative flex items-center justify-center w-screen h-screen overflow-hidden">
+          {/* Background Video */}
+          <video
+            className="absolute inset-0 z-0 w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
+          >
+            <source src="/videos/animal-crossing-background.mp4" type="video/mp4" />
+          </video>
+
+          {/* Content */}
+          <div className="relative z-10 flex flex-col items-center text-center px-4 gap-6">
+            <Image
+              src="/images/animal.png"
+              width={600}
+              height={600}
+              alt="Animal Crossing Logo"
+              className="mx-auto drop-shadow-xl"
+              priority
+            />
+
+            
+
+            <button className= "inline-block bg-red-600 text-white font-bold py-3 px-8 rounded-2xl hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg">
+              PRESS XO
+            </button>
+          </div>
+        </header>
+      </section>
+
+      {/* FEATURES SECTION */}
+      <section className="relative w-full py-20 text-center overflow-hidden">
+          <div 
+                className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+                style={{
+                backgroundImage: "url('/images/bg4.jpeg')"
+                }}
+           />
+
+        <h1 className="text-7xl md:text-8xl font-bold font-mono mb-8  text-black">FEATURES</h1>
 
 
 
-          
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 max-w-6xl mx-auto">
+          {[
+            { title: "Villagers", href: "/villagers" },
+            { title: "Characters", href: "/characters" },
+            { title: "About", href: "/about" },
+          ].map((feature, idx) => (
+            <a
+              key={idx}
+              href={feature.href}
+              className="bg-white rounded-xl shadow-lg p-8 hover:scale-105 transition-all hover:bg-yellow-50 hover:shadow-xl"
+            >
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">{feature.title}</h3>
+              <p className="text-sm text-gray-600 font-sans">
+                Learn more about {feature.title.toLowerCase()}.
+              </p>
+            </a>
+          ))}
         </div>
-      </div>
-    </section>
-    
-  );
+      </section>
+
+      {/* DISCOVER SECTION */}
+      <section className="relative w-full py-20 text-center overflow-hidden">
+           <div 
+                className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: "url('/images/yellowbg.png')"
+                }}
+            />
+     
   
+        <div className="absolute inset-0 bg-yellow-300/70 -z-10"></div>
+        
+        <h1 className="text-7xl md:text-8xl font-bold font-mono mb-8  text-black">DISCOVER</h1>
+
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="aspect-video mb-6 rounded-xl overflow-hidden shadow-lg">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/8AkEFot5UF0"
+              title="Animal Crossing Trailer"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
+
+          <p className="text-lg text-gray-700 mb-6 font-semi-bold font-sans">
+            New to Animal Crossing: New Horizons? Come get the lay of the land and learn
+            what to expect when you set out to create your own island paradise.
+          </p>
+
+          <a
+            href="https://www.animal-crossing.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-red-600 text-white font-bold py-3 px-8 rounded-2xl hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg"
+          >
+            Visit the website
+          </a>
+        </div>
+      </section>
+    </div>
+  );
 }
