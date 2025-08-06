@@ -1,6 +1,5 @@
-// components/organisms/villagerList.tsx
 import Image from 'next/image';
-import Link from 'next/link'; // 1. Impor komponen Link
+import Link from 'next/link'; 
 
 type Villager = {
   name: string;
@@ -17,8 +16,7 @@ export default function VillagerList({ villagers }: Props) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
       {villagers.map((v) => (
-        // 2. Bungkus seluruh div dengan komponen Link
-        // Gunakan encodeURIComponent untuk memastikan nama dengan spasi (contoh: "Agent S") berfungsi di URL
+        // Disini pake encodeURIComponent biar bisa memastikan nama dengan spasi (contoh: "Agent S") berfungsi di URL
         <Link href={`/villagers/${encodeURIComponent(v.name)}`} key={v.name}>
           <div className="bg-white rounded-lg shadow p-4 text-center h-full cursor-pointer hover:shadow-lg hover:ring-2 hover:ring-blue-400 transition-all duration-200">
             <Image

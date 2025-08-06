@@ -1,5 +1,4 @@
-import VillagerClientPage from './VillagerClientPage'; // Impor komponen client
-
+import VillagerClientPage from './VillagerClientPage'; 
 type Villager = {
   name: string;
   image_url: string;
@@ -7,7 +6,6 @@ type Villager = {
   personality: string;
 };
 
-// Fungsi fetch data tetap sama
 export const dynamic = 'force-dynamic';
 
 async function getData(): Promise<Villager[]> {
@@ -21,10 +19,10 @@ async function getData(): Promise<Villager[]> {
   return res.json();
 }
 
-// Komponen Page sekarang menjadi lebih ringkas
+
 export default async function VillagersPage() {
   const allVillagers = await getData();
-  // Anda bisa tetap membatasi jumlah data awal jika mau
+  
   const initialVillagers = allVillagers.slice(0, 80);
 
   return (
